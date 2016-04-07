@@ -16,7 +16,7 @@ try:
 except:
     print 'No config file'
 
-#COM = 'COM20'
+
 
 try:
     ser = serial.Serial(COM,BAUDRATE,timeout = 1)
