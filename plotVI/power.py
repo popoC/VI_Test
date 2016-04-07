@@ -11,7 +11,7 @@ import time
 fp = open('_20160406142458_VIC.txt','r');
 newdata = fp.readlines()
 
-newdata = newdata[0:6000]
+newdata = newdata[0:6100]
 
 V = np.zeros(len(newdata))
 I = np.zeros(len(newdata))
@@ -26,11 +26,13 @@ for data in newdata:
     I[i] = data.split(' ')[1]
     if (I[i]) > 0:
         j+=1;
-        P+=(I[i])
-        #P+=(I[i]*V[i])        
+        #P+=(I[i])
+        P+=(I[i]*V[i])        
         
     i=i+1
 
+print 'avg(V*I) = ' , (P/j)/3600 
+print 'S = ' , j 
 
 fig, ax1 = plt.subplots()
 
@@ -47,12 +49,3 @@ for tl in ax2.get_yticklabels():
     tl.set_color('r')
     
 plt.show()
-cc = 1
-
-#while (cc==1):
-#    try:
-#        time.sleep(0.1)
-#    except KeyboardInterrupt:
-#        cc = 0
-#        print 'Bye~'
-        
